@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd"
+       default-lazy-init="false">
+
+    <jaxrs:server id="aggregationDefinitionRestService" address="/statistic/aggregation-definition">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.AggregationDefinitionRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="aggregationDefinitionsRestService" address="/statistic/aggregation-definitions">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.AggregationDefinitionsRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="reportDefinitionRestService" address="/statistic/report-definition">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.ReportDefinitionRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="reportDefinitionsRestService" address="/statistic/report-definitions">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.ReportDefinitionsRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="preprocessingRestService" address="/statistic/preprocessing">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.PreprocessingRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="reportRestService" address="/statistic/report">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.ReportRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="scopeRestService" address="/statistic/scope">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.ScopeRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="scopesRestService" address="/statistic/scopes">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.ScopesRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+    <jaxrs:server id="statisticDataRestService" address="/statistic/statistic-data">
+        <jaxrs:providers>
+          <ref bean="escidocJaxbProvider"/>
+          <ref bean="escidocExceptionMapper"/>
+        </jaxrs:providers>
+        <jaxrs:serviceBeans>
+            <bean class="de.escidoc.core.sm.internal.StatisticDataRestServiceImpl"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:features>
+            <ref bean="compressGZIPFeature"/>
+            <ref bean="loggingFeature"/>
+        </jaxrs:features>
+    </jaxrs:server>
+
+</beans>

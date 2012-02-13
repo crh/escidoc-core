@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping
+    schema="sm"
+>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="de.escidoc.core.sm.business.persistence.hibernate.ReportDefinition" 
+    table="report_definitions"
+    lazy="false"
+>
+    <meta attribute="class-description" inherit="false">
+    </meta>
+
+    <cache usage="read-write" />
+
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+    
+        <meta attribute="field-description">
+        </meta>
+        <generator class="de.escidoc.core.common.persistence.EscidocIdGenerator" />
+    </id>
+
+    <property
+        name="name"
+        type="java.lang.String"
+        column="name"
+        not-null="true"
+        length="255"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+    <property
+        name="sql"
+        type="java.lang.String"
+        column="sql"
+        not-null="true"
+        length="2147483647"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+    <property
+        name="creatorId"
+        type="java.lang.String"
+        column="creator_id"
+        length="255"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+    <property
+        name="creationDate"
+        type="java.util.Date"
+        column="creation_date"
+        length="29"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+    <property
+        name="modifiedById"
+        type="java.lang.String"
+        column="modified_by_id"
+        length="255"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+    <property
+        name="lastModificationDate"
+        type="java.util.Date"
+        column="last_modification_date"
+        length="29"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Scope -->
+    <many-to-one
+        name="scope"
+        class="de.escidoc.core.sm.business.persistence.hibernate.Scope"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+        </meta>
+        <column name="scope_id" />
+    </many-to-one>
+    <!-- bi-directional one-to-many association to ReportDefinitionRole -->
+
+    <set
+        name="reportDefinitionRoles"
+        lazy="true"
+        inverse="false"
+		cascade="all"
+
+    >
+        <meta attribute="field-description">
+        </meta>
+        <key>
+            <column name="report_definition_id" />
+        </key>
+        
+        <one-to-many 
+            class="de.escidoc.core.sm.business.persistence.hibernate.ReportDefinitionRole"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

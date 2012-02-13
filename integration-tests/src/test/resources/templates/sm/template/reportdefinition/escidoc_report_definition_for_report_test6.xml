@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report-definition 
+    xmlns="http://www.escidoc.de/schemas/reportdefinition/0.4"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+	<name>Report Definition for Report Test2</name>
+	<scope xlink:href="/statistic/scope/1"/>
+	<sql>
+		select 
+		page,year,sum(requests) as requests,sum(sessions) as sessions 
+		from Report_Test 
+		where year &lt; 5000 
+		and page = {string_placeholder} 
+		and year = {numeric_placeholder}
+		group by page,year order by page, year;
+	</sql> 
+</report-definition>

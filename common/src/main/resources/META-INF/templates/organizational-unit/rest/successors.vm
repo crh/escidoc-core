@@ -1,0 +1,9 @@
+#*
+  Successors
+*#
+#parse("common/macros.vm")#set($unescapedTitle="#unesc(${SUCCESSORS_TITLE})")
+<${organizationalUnitSuccessorsNamespacePrefix}:successors #restInsertConditionalRoot(${isRoot} "false" "true" ${organizationalUnitSuccessorsNamespacePrefix} ${organizationalUnitSuccessorsNamespace} "#escA($unescapedTitle)" ${SUCCESSORS_HREF} ${LAST_MODIFICATION_DATE})>
+#foreach( ${SUCCESSOR} in ${SUCCESSORS} )
+ <${organizationalUnitSuccessorsNamespacePrefix}:successor #restLinkAttributes(${SUCCESSOR.TITLE} ${SUCCESSOR.HREF}) form="${SUCCESSOR.FORM}" />
+#end
+</${organizationalUnitSuccessorsNamespacePrefix}:successors>

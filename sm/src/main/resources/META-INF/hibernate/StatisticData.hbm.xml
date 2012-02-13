@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping
+    schema="sm"
+>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="de.escidoc.core.sm.business.persistence.hibernate.StatisticData" 
+    table="statistic_data"
+    lazy="false"
+>
+    <meta attribute="class-description" inherit="false">
+    </meta>
+
+    <cache usage="read-write" />
+
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+    
+        <meta attribute="field-description">
+        </meta>
+        <generator class="uuid" />
+    </id>
+
+    <property
+        name="xmlData"
+        type="java.lang.String"
+        column="xml_data"
+        not-null="true"
+        length="2147483647"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+    <property
+        name="timemarker"
+        type="java.util.Date"
+        column="timemarker"
+        not-null="true"
+        length="29"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Scope -->
+    <many-to-one
+        name="scope"
+        class="de.escidoc.core.sm.business.persistence.hibernate.Scope"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+        </meta>
+        <column name="scope_id" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

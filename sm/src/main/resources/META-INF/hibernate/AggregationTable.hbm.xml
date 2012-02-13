@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping
+    schema="sm"
+>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="de.escidoc.core.sm.business.persistence.hibernate.AggregationTable" 
+    table="aggregation_tables"
+    lazy="false"
+>
+    <meta attribute="class-description" inherit="false">
+    </meta>
+
+    <cache usage="read-write" />
+
+    <id
+        name="id"
+        type="java.lang.String"
+        column="id"
+    >
+    
+        <meta attribute="field-description">
+        </meta>
+        <generator class="de.escidoc.core.common.persistence.EscidocIdGenerator" />
+    </id>
+
+    <property
+        name="name"
+        type="java.lang.String"
+        column="name"
+        not-null="true"
+        length="255"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+    <property
+        name="listIndex"
+        type="int"
+        column="list_index"
+        not-null="true"
+        length="2"
+    >
+        <meta attribute="field-description">
+        </meta>    
+    </property>
+
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to AggregationDefinition -->
+    <many-to-one
+        name="aggregationDefinition"
+        class="de.escidoc.core.sm.business.persistence.hibernate.AggregationDefinition"
+        not-null="true"
+    >
+        <meta attribute="field-description">
+        </meta>
+        <column name="aggregation_definition_id" />
+    </many-to-one>
+    <!-- bi-directional one-to-many association to AggregationTableField -->
+
+    <set
+        name="aggregationTableFields"
+        lazy="false"
+        inverse="false"
+		cascade="all"
+
+    >
+        <meta attribute="field-description">
+        </meta>
+        <key>
+            <column name="aggregation_table_id" />
+        </key>
+        
+        <one-to-many 
+            class="de.escidoc.core.sm.business.persistence.hibernate.AggregationTableField"
+        />
+    </set>
+    <!-- bi-directional one-to-many association to AggregationTableIndexe -->
+
+    <set
+        name="aggregationTableIndexes"
+        lazy="false"
+        inverse="false"
+		cascade="all"
+
+    >
+        <meta attribute="field-description">
+        </meta>
+        <key>
+            <column name="aggregation_table_id" />
+        </key>
+        
+        <one-to-many 
+            class="de.escidoc.core.sm.business.persistence.hibernate.AggregationTableIndexe"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>
